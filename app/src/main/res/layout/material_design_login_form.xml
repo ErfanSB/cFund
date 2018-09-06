@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+   >
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_alignTop="@+id/user_profile_photo"
+
+
+        tools:ignore="UnusedAttribute">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:paddingTop="30dp">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/aname">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="   نام و نام خانوادگی   "
+                    android:inputType="text"
+                    android:layoutDirection="rtl"
+                    android:singleLine="true"
+                    tools:ignore="HardcodedText" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/aphone">
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="   شماره تلفن   "
+                    android:inputType="numberDecimal"
+                    android:layoutDirection="rtl"
+                    android:singleLine="true"
+
+                    tools:ignore="HardcodedText,TextFields" />
+            </android.support.design.widget.TextInputLayout>
+
+            <com.raycoarana.codeinputview.CodeInputView
+                android:id="@+id/codeinput"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:underline_selected_color="@color/colorAccent"
+                app:underline_color="@color/colorPrimary"
+                app:code_text_color="@color/colorPrimary"
+                app:error_color="@color/colorAccent"
+                app:input_type="numeric"
+                app:length_of_code="4"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:id="@+id/showcount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:id="@+id/txtsms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="8dp"
+                    tools:ignore="RtlHardcoded">
+
+                    <TextView
+                        android:id="@+id/number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="2dp"
+                        android:text="09123456789"
+                        android:textColor="#777"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="2dp"
+                        android:text="برای"
+                        android:textColor="#777"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/downcount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:lineSpacingMultiplier="1.1"
+                        android:padding="2dp"
+                        android:layout_gravity="center"
+
+                        android:text="00:00"
+                        android:textColor="#777"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="right"
+                        android:padding="2dp"
+                        android:text="تا"
+                        android:textColor="#777"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        android:layout_marginRight="8dp"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="پیامکی حاوی کد فعال سازی ارسال خواهد شد، لطفا شکیبا باشید"
+                    android:textColor="#777"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    android:layout_marginRight="8dp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/sendagain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dip"
+                android:layout_marginTop="8dip"
+                android:gravity="right"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:text="ارسال دوباره "
+                android:textColor="#5fb0c9"
+                android:textSize="13sp"
+                android:layout_marginRight="8dip"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+            <Button
+                android:id="@+id/enter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/enter_button"
+                android:text="ورود"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/user_profile_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/user_profile_image_background"
+        android:elevation="4dp"
+        app:srcCompat="@drawable/ic_user"
+        tools:ignore="ContentDescription,UnusedAttribute" />
+</RelativeLayout>

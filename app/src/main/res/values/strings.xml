@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CFund</string>
+    <string name="title_section1">پروژه ها</string>
+    <string name="title_section2">کمپین ها</string>
+    <string name="title_section3">سرمایه گذاران</string>
+
+</resources>
