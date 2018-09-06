@@ -2,25 +2,25 @@ package com.arena.maraton;
 
 public class ItemObject {
 
-    private int screenShot;
-    private String musicName;
-    private String musicAuthor;
+    private String img1;
+    private String title;
+    private String desc;
 
-    public ItemObject(int screenShot, String musicName, String musicAuthor) {
-        this.screenShot = screenShot;
-        this.musicName = musicName;
-        this.musicAuthor = musicAuthor;
+    public ItemObject(String img1, String title, String desc) {
+        this.img1 = img1;
+        this.title = title;
+        this.desc = desc;
     }
 
-    public int getScreenShot() {
-        return screenShot;
+    public String getimg1() {
+        return img1;
     }
 
-    public String getMusicName() {
-        return musicName;
+    public String gettitle() {
+        return title;
     }
 
-    public String getMusicAuthor() {
-        return musicAuthor;
+    public String getdesc() {
+        return desc;
     }
 }

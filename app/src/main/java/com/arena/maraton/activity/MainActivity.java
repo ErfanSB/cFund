@@ -11,8 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.arena.maraton.PopMusicFragment;
+import com.arena.maraton.ProjectsFragment;
 import com.arena.maraton.R;
+import com.arena.maraton.app.G;
 
 import java.util.Locale;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        G.Activity=this;
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -60,12 +61,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -112,14 +107,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             Fragment fragment = null;
             switch(position){
                 case 0:
-                    fragment = new PopMusicFragment();
+                    fragment = new ProjectsFragment();
                     break;
                 case 1:
-                    fragment = new PopMusicFragment();
+                    fragment = new ProjectsFragment();
                     //fragment = new RaggaeMusicFragment();
                     break;
                 case 2:
-                    fragment = new PopMusicFragment();
+                    fragment = new ProjectsFragment();
                     //fragment = new RapMusicFragment();
             }
             return fragment;

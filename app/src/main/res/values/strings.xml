@@ -3,5 +3,6 @@
     <string name="title_section1">پروژه ها</string>
     <string name="title_section2">کمپین ها</string>
     <string name="title_section3">سرمایه گذاران</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

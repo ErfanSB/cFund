@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.pd.chicken.ShowActivity"
+    tools:showIn="@layout/activity_show"
+    xmlns:numberpicker="http://schemas.android.com/apk/res-auto">
+
+
+
+
+            <LinearLayout
+                android:id="@+id/other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e5e5e5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <LinearLayout
+                        android:id="@+id/su"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:gravity="right"
+                        android:orientation="vertical"
+                        android:padding="7dp">
+
+                        <TextView
+                            android:id="@+id/txtnamesubj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/txtnamekind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/txtnamestate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/txtnamesaddres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtnamedate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/subj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="right"
+                        android:orientation="vertical"
+                        android:padding="7dp">
+
+                        <TextView
+                            android:id="@+id/txtsubj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="عنوان  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtkind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="نوع  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtstate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="وضعيت  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtaddres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="آدرس  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="تاريخ احداث  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/part"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:padding="9dp">
+
+
+                    <TextView
+                        android:id="@+id/txtparts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="اجزاء "
+                        android:textColor="#8c8c8c"
+                        android:textSize="16sp" />
+
+                    <ListView
+                        android:id="@+id/listParts"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:divider="@null"
+                        >
+
+                    </ListView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:padding="9dp">
+
+
+                    <TextView
+                        android:id="@+id/txtdesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="توضيحات  "
+                        android:textColor="#8c8c8c"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtnamedesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:textColor="#222222"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/ssu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:gravity="right"
+                        android:orientation="vertical"
+                        android:padding="7dp">
+
+                        <TextView
+                            android:id="@+id/txtName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtDate_req"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtReason"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="#222222"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/susbj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:gravity="right"
+                        android:orientation="vertical"
+                        android:padding="7dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="نام و نام خانوادگی  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="تاریخ گزارش  "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="علت خرابی "
+                            android:textColor="#8c8c8c"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/desc_fail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:padding="9dp"
+                    android:visibility="gone">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="توضیحات گزارش "
+                        android:textColor="#8c8c8c"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtDesc_req"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:textColor="#222222"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+</android.support.v4.widget.NestedScrollView>
