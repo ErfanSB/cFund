@@ -44,4 +44,7 @@ dependencies {
     implementation 'com.raycoarana.codeinputview:codeinputview:1.2.5'
     implementation 'com.xgc1986.android:parallaxpagertransformer:1.0.4'
     implementation 'me.relex:circleindicator:1.2.2@aar'
+    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:2.1.0'
+    implementation 'com.github.jakob-grabner:Circle-Progress-View:v1.3'
+
 }

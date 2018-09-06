@@ -68,6 +68,7 @@ listViewHolder.card_view.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(G.context, ShowActivity.class);
+        intent.putExtra("ID",listStorage.get(position).getid());
         G.Activity.startActivity(intent);
     }
 });

@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/AppTheme.NoActionBar"
@@ -74,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                android:layoutDirection="rtl"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 >
 
@@ -91,7 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_anchor="@id/app_bar"
+
         app:layout_anchorGravity="bottom|start"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/ic_ocation" />
 
 </android.support.design.widget.CoordinatorLayout>

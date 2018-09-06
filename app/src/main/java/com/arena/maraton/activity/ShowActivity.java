@@ -80,8 +80,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView txtsubj;
     private TextView txtkind;
     private TextView txtstate;
-    private TextView txtaddres;
-    private TextView txtdate;
+
     private ListView lsparts;
     private TextView txtdesc;
     public static ProgressBar progressBar;
@@ -127,12 +126,8 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id = extras.getString("ID");
-            Fail = extras.getBoolean("Fail");
         }
-        if (Fail) {
-            findViewById(R.id.fail).setVisibility(View.VISIBLE);
-            findViewById(R.id.desc_fail).setVisibility(View.VISIBLE);
-        }
+
         mActionBarBackgroundDrawable = new ColorDrawable(getColor(R.color.colorPrimary));
         mActionBarBackgroundDrawable.setAlpha(0);
         getSupportActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
@@ -189,8 +184,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
         txtsubj = (TextView) findViewById(R.id.txtnamesubj);
         txtkind = (TextView) findViewById(R.id.txtnamekind);
         txtstate = (TextView) findViewById(R.id.txtnamestate);
-        txtaddres = (TextView) findViewById(R.id.txtnamesaddres);
-        txtdate = (TextView) findViewById(R.id.txtnamedate);
+
         lsparts = (ListView) findViewById(R.id.listParts);
         lsparts.setFocusableInTouchMode(false);
 
@@ -201,7 +195,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
         mViewPager.setPageTransformer(false, new ParallaxPagerTransformer(R.id.image));
 
         indicato = (CircleIndicator) findViewById(R.id.indicator);
-        Down(2 + "");
+        Down(id + "");
     }
 
     private void setUpView() {
@@ -229,13 +223,59 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
                         JSONObject object = tasks.getJSONObject(i);
                         subject = object.getString("title");
                         kind = object.getString("kind");
+                        switch (kind){
+                            case "1":
+                                kind="استارتاپ";
+                                break;
+                            case "2":
+                                kind="انیمیشن";
+                                break;
+                            case "3":
+                                kind="تئاتر";
+                                break;
+                            case "4":
+                                kind="سینما";
+                                break;
+                            case "5":
+                                kind="عکاسی";
+                                break;
+                            case "6":
+                                kind="فرهنگی";
+                                break;
+                            case "7":
+                                kind="فیلم";
+                                break;
+                            case "8":
+                                kind="فیلم کوتاه";
+                                break;
+                            case "9":
+                                kind="مجسمه سازی";
+                                break;
+                            case "10":
+                                kind="مستند";
+                                break;
+                            case "11":
+                                kind="موسیقی";
+                                break;
+                            case "12":
+                                kind="مینیمال";
+                                break;
+                            case "13":
+                                kind="نقاشی";
+                                break;
+                            case "14":
+                                kind="ورزشی";
+                                break;
+                        }
                         state = object.getString("kind");
 
                         desc = object.getString("description");
                         String s = object.getString("location");
-                        String[] separated = s.split(",");
-                        lat = separated[0];
-                        lon = separated[1];
+                        if(s.length()>4 && s.contains(",")) {
+                            String[] separated = s.split(",");
+                            lat = separated[0];
+                            lon = separated[1];
+                        }
                         img1 = object.getString("img1") + "";
                         img2 = object.getString("img2") + "";
                         img3 = object.getString("img3") + "";
@@ -265,12 +305,8 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
             protected void onPostExecute(Boolean result) {
                 txtsubj.setText(subject);
                 txtkind.setText(kind);
-
-
                 txtstate.setText(state);
-                txtaddres.setText(address);
-                if (date != null)
-                    txtdate.setText(date.replace("-", " / "));
+
                 mViewPager.setAdapter(new SlidingImage_Adapter(ShowActivity.this, ImagesArray));
                 indicato.setViewPager(mViewPager);
                 txtdesc.setText(desc);
