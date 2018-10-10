@@ -20,9 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arena.maraton.R;
+import com.arena.maraton.StructComment;
+import com.qiscus.sdk.BuildConfig;
 import com.qiscus.sdk.Qiscus;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -36,10 +39,11 @@ public class G extends Application {
     public static LayoutInflater inflater;
     public static int i = 0;
     public static SharedPreferences preferences;
+    public static ArrayList<StructComment> commments = new ArrayList<>();
     public static String host = "http://arenateam.ir/cfund/service.php?action=";
     public static String font = "fonts/shabnam.ttf";
     public static AppCompatActivity Activity;
-
+public static String MerchantID="795816e0-55d9-11e8-b0c7-005056a205be";
     @SuppressLint({"ResourceType", "SimpleDateFormat"})
     public void onCreate() {
         super.onCreate();
@@ -47,8 +51,8 @@ public class G extends Application {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        Qiscus.init(this, "khabgahne-gy7hy1elmis");
-        //Qiscus.setEnableLog(BuildConfig.DEBUG);
+        Qiscus.init(this, "cfundapp-un6ffw6lx3ml");
+        Qiscus.setEnableLog(BuildConfig.DEBUG);
         Qiscus.getChatConfig()
                 .setStatusBarColor(R.color.colorPrimaryDark)
                 .setAppBarColor(R.color.colorPrimary)
@@ -57,10 +61,11 @@ public class G extends Application {
                 .setTitleColor(R.color.White)
                 .setReadIconColor(android.R.color.holo_blue_bright)
                 .setFailedToSendMessageColor(R.color.colorAccent)
-                .setRightBubbleColor(R.color.colorAccent)
+                .setRightBubbleColor(R.color.colorPrimary)
                 .setRightBubbleTextColor(R.color.White)
                 .setRightBubbleTimeColor(android.R.color.darker_gray)
                 .setRecordText("صدا")
+
                 .setAddFileText("فایل")
                 .setAddLocationText("موقعیت")
                 .setAddPictureText("عکس")

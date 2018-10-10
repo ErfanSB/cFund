@@ -15,17 +15,26 @@
     <application
         android:name=".app.G"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.ShowActivity"
             android:label=""
             android:parentActivityName=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.MaterialDesignLogInForm">
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="cfund"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MaterialDesignLogInForm"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,6 +43,25 @@
         </activity>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.CommentActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".activity.ShowActivity"
+            android:label="نظرات کاربران">
+
+        </activity>
+        <activity android:name=".activity.showActivity2"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.MainActivity"
+          />
+        <activity android:name=".activity.show"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ActivityInsert"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity"
+            android:label="افزودن"/>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

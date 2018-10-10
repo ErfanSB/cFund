@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +59,7 @@ public class CampaignFragment extends Fragment {
                         JSONArray array = new JSONArray(result);
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject object = array.getJSONObject(i);
-                            items.add(new ItemObject(object.getString("id"), object.getString("img1"), object.getString("title"), object.getString("description")));
+                            items.add(new ItemObject(object.getString("id"), object.getString("img1"), object.getString("title"), object.getString("description"), 0, 0, 0));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

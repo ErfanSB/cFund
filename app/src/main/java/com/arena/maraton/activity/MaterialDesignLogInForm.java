@@ -229,18 +229,16 @@ public class MaterialDesignLogInForm extends AppCompatActivity  {
     @SuppressLint("StaticFieldLeak")
     public void newUser(final ArrayList<NameValuePair> params) {
 
-        new AsyncTask<Object, Object, Boolean>() {
+        new AsyncTask<Object, Object, String>() {
 
             @Override
-            protected Boolean doInBackground(Object... parms) {
+            protected String doInBackground(Object... parms) {
                 String url = "user";
-                Webservice.readUrl(url, params);
-
-                return null;
+                return Webservice.readUrl(url, params);
             }
 
             @Override
-            protected void onPostExecute(Boolean result) {
+            protected void onPostExecute(String result) {
                 G.toast("لطفا صبر کنید");
                 SharedPreferences.Editor editor = G.preferences.edit();
                 editor.putString("PHONE", getValueByKey(params, "phone"));

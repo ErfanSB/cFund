@@ -4,13 +4,17 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="4dp"
+    android:layout_margin="4dp"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="7dp"
     card_view:cardUseCompatPadding="true">
+
     <LinearLayout
+        android:id="@+id/card_view1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

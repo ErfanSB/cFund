@@ -69,14 +69,14 @@ public class itemsCAdapter extends RecyclerView.Adapter<itemsCAdapter.AbsentView
         ImageView screenShot;
         TextView musicName;
         TextView musicAuthor;
-        CardView card_view;
+        ViewGroup card_view;
 
         AbsentViewHolder(View itemView) {
             super(itemView);
             screenShot = itemView.findViewById(R.id.screen_shot);
             musicName = itemView.findViewById(R.id.music_name);
             musicAuthor = itemView.findViewById(R.id.music_author);
-            card_view = itemView.findViewById(R.id.card_view);
+            card_view = itemView.findViewById(R.id.card_view1);
         }
     }
 }

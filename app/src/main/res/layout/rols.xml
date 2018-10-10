@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 1 : در تأمین مالی جمعی، منابع موردنیاز راهاندازي یا توسعه یک کسبوکار تأمین شـده و تـأمین کننـده منـابع، نقـش
+مشارکتکننده در طرح را داشته و در سود و زیان طرح شریک است."/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 2 : عامل موظف است براي انجام تأمین مالی جمعی، نسبت به اخـذ مجـوز فعالیـت از کـارگروه ارزیـابی مطـابق ایـن
+دستورالعمل اقدام نماید.این دستورالعمل به پیشنهاد فرابورس، به تصویب سازمان خواهد رسید.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 3 : سکوهاي موجود تأمین مالی جمعی حداکثر شش ماه پس از تصویب این دستورالعمل فرصت اخذ مجـوز فعالیـت از
+کارگروه ارزیابی را دارند. پس از این تاریخ، به صورت مستمر فهرست سکوهاي مجاز به تأمین مالی جمعی از طریق سـامانه
+فرابورس، موضوع ماده 20 این دستورالعمل، اعلام خواهد شد و وزارت ارتباطات و فناوري اطلاعات اقدام بـه مسدودسـازي
+تمامی سکوهایی که در این فهرست قرار ندارند، خواهد کرد.
+"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 4 : انتقال گواهی شراکت به غیر، بر اساس رویهاي که ظرف مدت حداکثر 2 ماه پس از تصویب این دسـتورالعمل بـه
+پیشنهاد فرابورس، به تصویب سازمان خواهد رسید، انجام میپذیرد.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 5 : حداکثر مقدار قابل تأمین از طریق تأمین مالی جمعی براي هر طرح 20میلیارد ریال است. این مبلغ بهطور سـالانه
+توسط کارگروه ارزیابی مورد بازنگري قرار میگیرد.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 6 : حداکثر مقدار پذیرش مجموع طرحهاي باز نزد عامل در هر زمان، نمیتواند بیشتر از 200 میلیارد ریال باشد. این
+ماده 11 -متقاضی، ملزم به تأمین حداقل10 درصد وجه مورد نیاز طرح میباشد.
+مبلغ بهطور سالانه توسط کارگروه ارزیابی مورد بازنگري قرار میگیرد.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 7 : حداکثر مقدار قابل تأمین از طریق هر تأمین کننده شخص حقیقی، حداکثر به میزان 5 درصد از کل مبلغ هر طرح
+است."/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 8 : تأمین مالی جمعی براي یک طرح مشخص نباید بهصورت همزمان توسط چند سکوي مختلف انجام شود. عامـل
+موظف است پیش از انتشار فراخوان تأمین، بررسیهاي لازم را در این خصوص انجام دهد."/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 9 -تمامی ورود و خروج وجوه باید از طریق درگاه یا شبکههاي پرداخت معتبر داخلی انجام شود.
+ماده 10 : پرداخت وجوه جمعآوريشده به متقاضی، باید منحصراً از طریق پرداخت بهحساب بانکیِ متقاضی صورت پذیرد.
+تبصره: عامل باید براي هریک از طرحها حساب تفصیلی اختصاصی داشته باشد."/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 11 : نحوه جمعآوري و تخصیص وجوه به متقاضی و نحوة نظارت بر آن توسط کارگروه ارزیابی تعیین میشود.
+"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 12 :عامل موظف است ضمن تهیۀ محتواي آموزشی در سکوي خود براي تأمینکنندگان، جهت کمـک بـه آنهـا در
+درك ریسکهایی مانند امکان زیان یا عدم نقدشوندگی، ترتیبی اتخاذ کند تا هر تأمینکننده حداقل یک بار پس از ورود بـه
+سکوي عامل، محتواي مزبور را مشاهده نماید.
+"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="
+ماده 13 : عامل موظف است ریسکهاي مربوط به طرح را از طریق سکو به اطلاع تأمینکنندگان برساند و ترتیباتی اتخـاذ
+نماید تا هر تأمینکننده پیش از اقدام به مشارکت در طرح، آگاهی خود را از ریسکهاي مذکور اعلام نماید.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 14 : عامل موظف است گزارش عملکرد و صورتهاي مـال ی سـالانه حسابرسـ ی شـده خـود را بـه همـراه اظهـارنظر
+    حسابرس، حداکثر 4 ماه پس از پایان سال مالی به کارگروه ارزیابی ارسال نماید.
+"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 15 : عامل تحت هیچ شرایطی نمیتواند مشارکت در یک طرح خاص را به تأمینکنندگان توصیه کند.
+"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="
+ماده 16 : عامل موظف است شرایطی را فراهم کند تا هر تأمینکننده قبل از سرمایهگذاري بـر روي هـر طـرح، بـه منظـور
+اطمینان از ثبت طرح در سکوي داراي مجوز، کد تأییدي را از سامانه فرابورس، موضوع ماده 20 این دسـتورالعمل، دریافـت کند.
+"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="ماده 17 : عامل موظف است هر نوع اطلاعات مربوط به فعالیتهاي تأمین مالی جمعی خود را به اطلاع فرابورس برساند.
+"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="
+ماده 18 : دستگاههاي اجرایی موضوع ماده 5 قانون مـدیریت خـدمات کشـوري، بانـک هـا و مؤسسـات مـالی و اعتبـاري،
+نهادهاي مالی داراي مجوز از سازمان و شرکتهاي پذیرفته شده در بورس و بازار اول و دوم فرابـورس و شـرکت هـاي درج
+شده در بازار پایه فرابورس مجاز به تأمین منابع از طریق سکوهاي تأمین مالی جمعی نیستند.
+
+"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text="
+ماده 19 : شرایط متقاضی به شرح زیر است:
+الف- شخص حقوقی باشد؛
+ب- دعاوي داراي اثر بااهمیت حقوقی یا کیفري علیه شرکت/ مؤسسه و اعضاي هیئـت مـد یره یـا مـد یرعامل/رئـ یس
+شرکت/مؤسسه متقاضی وجود نداشته باشد؛
+ج- اعضاي حقیقی هیئتمدیره و مدیرعامل شرکت/مؤسسه متقاضی باید گواهی عدم سوءپیشینه ارائه دهنـد، کـه از
+زمان صدور آن بیش از یک ماه نگذشته باشد؛
+د- سایر شرایط به تشخیص کارگروه ارزیابی.
+"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:text=" ماده 20 : تأمینکنندگان باید داراي کد بورسی باشند."/>
+
+
+    <CheckBox
+        android:id="@+id/chek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"
+        android:text="موافقم"/>
+</LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

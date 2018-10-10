@@ -4,128 +4,135 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="4dp"
+    android:layout_margin="4dp"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="7dp"
     card_view:cardUseCompatPadding="true">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
-
-        <ImageView
-            android:id="@+id/screen_shot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:adjustViewBounds="true"
-
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/sss1" />
-
-        <TextView
-            android:id="@+id/music_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/screen_shot"
-            android:layout_below="@+id/screen_shot"
-            android:layout_marginTop="8dp"
-            android:inputType="text"
-            android:padding="6dp"
-
-            android:textColor="#000"
-            android:textSize="19sp"
-            tools:text="عنوان" />
-
-        <TextView
-            android:id="@+id/music_author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/music_name"
-            android:layout_below="@+id/music_name"
-            android:layout_marginTop="4dp"
-            android:padding="6dp"
-            android:singleLine="true"
-            android:textColor="#646464"
-            android:textSize="16sp"
-            tools:text="توضیحات" />
-
-    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/tozihprojects"
+        android:id="@+id/card_view1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/screen_shot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+
+                android:cropToPadding="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sss1" />
 
             <TextView
+                android:id="@+id/music_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/screen_shot"
+                android:layout_below="@+id/screen_shot"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:padding="6dp"
 
+                android:textColor="#000"
+                android:textSize="19sp"
+                tools:text="عنوان" />
+
+            <TextView
+                android:id="@+id/music_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/music_name"
+                android:layout_below="@+id/music_name"
+                android:layout_marginTop="4dp"
+                android:padding="6dp"
+                android:singleLine="true"
+                android:textColor="#646464"
+                android:textSize="16sp"
+                tools:text="توضیحات" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/tozihprojects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtPersent"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="98%"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:padding="28dp"
+                    android:progress="65"
+                    android:progressDrawable="@drawable/circular_progress_bar" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:background="#646464" />
+
+            <TextView
+                android:id="@+id/sumFund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="98%"
-                android:textColor="@color/colorAccent"
-                android:textSize="14sp" />
+                android:text="12،100 جذب شده"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
-            <ProgressBar
-                android:padding="30dp"
-                android:id="@+id/progressBar"
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:indeterminate="false"
-                android:progressDrawable="@drawable/circular_progress_bar"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:background="#646464" />
 
-                style="?android:attr/progressBarStyleHorizontal"
-                android:max="100"
-                android:progress="65" />
-        </RelativeLayout>
-        <View
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:background="#646464" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="12،100 جذب شده"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
-            android:background="#646464" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="6 روز مانده"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/needTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="6 روز مانده"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </android.support.v7.widget.CardView>

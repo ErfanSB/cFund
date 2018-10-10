@@ -3,15 +3,19 @@ package com.arena.maraton.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +27,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.arena.maraton.AppBarStateChangeListener;
 import com.arena.maraton.CustomPager;
 import com.arena.maraton.NotifyingScrollView;
 import com.arena.maraton.R;
@@ -36,7 +46,6 @@ import com.arena.maraton.SlidingImage_Adapter;
 import com.arena.maraton.StructTask;
 import com.arena.maraton.Webservice;
 import com.arena.maraton.app.G;
-import com.arena.maraton.app.RtlActionBar;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -45,6 +54,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.xgc1986.parallaxPagerTransformer.ParallaxPagerTransformer;
+import com.zarinpal.ewallets.purchase.OnCallbackRequestPaymentListener;
+import com.zarinpal.ewallets.purchase.OnCallbackVerificationPaymentListener;
+import com.zarinpal.ewallets.purchase.PaymentRequest;
+import com.zarinpal.ewallets.purchase.ZarinPal;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -53,6 +66,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import me.relex.circleindicator.CircleIndicator;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -101,6 +115,12 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView txtDesc_req;
     public static StructTask struct_item;
     private CircleIndicator indicato;
+    private boolean liked = false;
+    private ViewGroup tozihprojects;
+    private String Ntime;
+    private String Nfund;
+    private String Sfund;
+    private int persent;
 
 
     @Override
@@ -108,6 +128,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,11 +143,88 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
         CollapsingToolbarLayout c = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         c.setCollapsedTitleTypeface(Typeface.SERIF);
         c.setExpandedTitleTypeface(Typeface.SERIF);
-       // RtlActionBar.Set(getWindow(),G.context);
+        AppBarLayout appBarLayout = findViewById(R.id.app_bar);
+        ViewGroup flats = findViewById(R.id.flats);
+        appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                if (state == State.COLLAPSED) {
+                    flats.setVisibility(View.GONE);
+                    getSupportActionBar().setTitle(subject);
+                } else {
+                    flats.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+        TextView txtPersent = findViewById(R.id.txtPersent);
+        Button payment = findViewById(R.id.payment);
+
+        TextView sumFund = findViewById(R.id.sumFund);
+        TextView needTime = findViewById(R.id.needTime);
+        ProgressBar pbPersent = findViewById(R.id.progressBar);
+        tozihprojects = findViewById(R.id.tozihprojects);
+        // RtlActionBar.Set(getWindow(),G.context);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id = extras.getString("ID");
+            if (extras.containsKey("sumFund")) {
+                tozihprojects.setVisibility(View.VISIBLE);
+                Ntime=extras.getString("needTime");
+                Nfund=extras.getString("needFund");
+                Sfund=extras.getString("sumFund");
+                needTime.setText((Ntime));
+
+                sumFund.setText(convert(Sfund));
+                sumFund.append("\n");
+                sumFund.append("جذب شده");
+                 persent = extras.getInt("persent");
+                txtPersent.setText(persent + "%");
+                pbPersent.setProgress(persent);
+            } else {
+
+                tozihprojects.setVisibility(View.GONE);
+            }
         }
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tozihprojects.getVisibility()==ViewGroup.VISIBLE) {
+                    DialogPay();
+                }else {
+                    requestPayment(10000);
+                }
+            }
+        });
+        ViewGroup like = findViewById(R.id.like);
+        ViewGroup comment = findViewById(R.id.comment);
+        ImageView imglike = findViewById(R.id.imglike);
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (liked) {
+                    G.toast("لایک شما برداشته شد");
+                    imglike.setImageResource(R.drawable.ic_like);
+                    liked = false;
+                } else {
+                    G.toast("لایک شد");
+                    liked = true;
+                    imglike.setImageResource(R.drawable.ic_liked);
+                }
+            }
+        });
+        comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tozihprojects.getVisibility() == View.VISIBLE) {
+                    startActivity(new Intent(ShowActivity.this, CommentActivity.class).putExtra("ID", "p" + id));
+                } else {
+                    startActivity(new Intent(ShowActivity.this, CommentActivity.class).putExtra("ID", "c" + id));
+                }
+
+            }
+        });
 
         mActionBarBackgroundDrawable = new ColorDrawable(getColor(R.color.colorPrimary));
         mActionBarBackgroundDrawable.setAlpha(0);
@@ -150,7 +248,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
                     mapView.setVisibility(View.VISIBLE);
                     ViewAnimationUtils.createCircularReveal(mapView, cx, cy, 0, radius).start();
 
-
+                    fab.setImageResource(R.drawable.ic_image);
                 } else {
                     mapView.onPause();
                     Animator reveal = ViewAnimationUtils.createCircularReveal(
@@ -159,6 +257,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             mapView.setVisibility(View.GONE);
+                            fab.setImageResource(R.drawable.ic_placeholder);
                         }
                     });
                     reveal.start();
@@ -196,11 +295,150 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
 
         indicato = (CircleIndicator) findViewById(R.id.indicator);
         Down(id + "");
-    }
+        if (getIntent().getData() != null) {
 
+            ZarinPal.getPurchase(this).verificationPayment(getIntent().getData(), new OnCallbackVerificationPaymentListener() {
+                @Override
+                public void onCallbackResultVerificationPayment(boolean isPaymentSuccess, String refID, PaymentRequest paymentRequest) {
+                    Log.i("TAG", "onCallbackResultVerificationPayment: " + refID);
+                    if (isPaymentSuccess) {
+                        Toast.makeText(ShowActivity.this, "پرداخت با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(ShowActivity.this, "پرداخت به مشکل خورده است", Toast.LENGTH_SHORT).show();
+                    }
+                    if(G.preferences.getString("KINDPAY","").equals("2")){
+                        tozihprojects.setVisibility(View.GONE);
+                    }else {
+                        tozihprojects.setVisibility(View.VISIBLE);
+                    }
+                    Down(G.preferences.getString("IDPAY", ""));
+                }
+            });
+        }
+
+    }
+@SuppressLint("NewApi")
+public void DialogPay(){
+    Dialog dialog = new Dialog(ShowActivity.this);
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    dialog.setContentView(R.layout.dialog_pay);
+    SeekBar seekBar = dialog.findViewById(R.id.seekbarTavaghof);
+    ProgressBar progressBar = dialog.findViewById(R.id.progressBar);
+    TextView txtPersent = dialog.findViewById(R.id.txtPersent);
+    TextView tozihseek = dialog.findViewById(R.id.tavaghofs);
+    TextView azz = dialog.findViewById(R.id.bee);
+    TextView bee = dialog.findViewById(R.id.azz);
+    Button pay = dialog.findViewById(R.id.pay);
+    pay.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if((seekBar.getProgress()-Integer.parseInt(Sfund)>100)){
+
+                requestPayment((seekBar.getProgress()-Integer.parseInt(Sfund)));
+            }else {
+                G.toast("مبلغ بسیار کم است");
+            }
+        }
+    });
+    progressBar.setMax(Integer.parseInt(Nfund));
+
+    seekBar.setMax(Integer.parseInt(Nfund));
+    //progressBar.setMin(Integer.parseInt(Sfund));
+    txtPersent.setText(persent+"%");
+    seekBar.setProgress(Integer.parseInt(Sfund));
+    tozihseek.setText(convert(seekBar.getProgress()+"")+"تومان");
+    azz.setText(" مبلغ "+convert((seekBar.getProgress()-Integer.parseInt(Sfund))+"")+" تومان حمایت شما ");
+    bee.setText(" درصد "+(int)((float)(seekBar.getProgress()-Integer.parseInt(Sfund))/progressBar.getMax()*100)+"% از کل حمایت ");
+    progressBar.setProgress(Integer.parseInt(Sfund));
+    dialog.show();
+    seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            if(progress<Integer.parseInt(Sfund)){
+                seekBar.setProgress(Integer.parseInt(Sfund));
+            }
+
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            tozihseek.setText(convert(seekBar.getProgress()+"")+"تومان");
+            progressBar.setProgress(seekBar.getProgress());
+            azz.setText(" مبلغ "+convert((seekBar.getProgress()-Integer.parseInt(Sfund))+"")+" تومان حمایت شما ");
+            bee.setText(" درصد "+(int)((float)(seekBar.getProgress()-Integer.parseInt(Sfund))/progressBar.getMax()*100)+"% از کل حمایت ");
+            txtPersent.setText((int)((float)progressBar.getProgress()/progressBar.getMax()*100)+"%");
+        }
+    });
+}
+    public static String convert(String value) {
+        StringTokenizer lst = new StringTokenizer(value, ".");
+        String str1 = value;
+        String str2 = "";
+        if (lst.countTokens() > 1) {
+            str1 = lst.nextToken();
+            str2 = lst.nextToken();
+        }
+        StringBuilder str3 = new StringBuilder();
+        int i = 0;
+        int j = -1 + str1.length();
+        if (str1.charAt(-1 + str1.length()) == '.') {
+            j--;
+            str3 = new StringBuilder(".");
+        }
+        for (int k = j; ; k--) {
+            if (k < 0) {
+                if (str2.length() > 0)
+                    str3.append(".").append(str2);
+                return str3.toString().replace("1", "۱").replace("2", "۲").replace("3", "۳").replace("4", "۴").replace("5", "۵").replace("6", "۶").replace("7", "۷").replace("8", "۸").replace("9", "۹").replace("0", "۰");
+            }
+            if (i == 3) {
+                str3.insert(0, ",");
+                i = 0;
+            }
+            str3.insert(0, str1.charAt(k));
+            i++;
+        }
+    }
     private void setUpView() {
 
 
+    }
+
+    private void requestPayment(long cost) {
+        G.toast("در حال اتصال به درگاه بانک لطفا صبر کنید");
+        G.preferences.edit().putString("IDPAY", id).apply();
+        if (tozihprojects.getVisibility() == View.GONE)
+            G.preferences.edit().putString("KINDPAY", "2").apply();
+        else
+            G.preferences.edit().putString("KINDPAY", "1").apply();
+        ZarinPal purchase = ZarinPal.getPurchase(G.context);
+        PaymentRequest payment = ZarinPal.getPaymentRequest();
+        payment.setMerchantID(G.MerchantID);
+        payment.setAmount(cost);
+        payment.setDescription("پرداخت آنلاین سیفاند");
+        payment.setCallbackURL("cfund://app");
+        payment.setMobile(G.preferences.getString("PHONE", ""));
+
+        //payment.setEmail("imannamix@gmail.com");
+        purchase.startPayment(payment, new OnCallbackRequestPaymentListener() {
+            @Override
+            public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
+                if (status == 100) {
+                    startActivity(intent);
+                } else {
+                    G.toast("پرداخت آنلاین به مشکل برخورده");
+                }
+
+            }
+        });
     }
 
     private ArrayList<String> ImagesArray = new ArrayList<String>();
@@ -213,8 +451,10 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
 
                 final ArrayList<NameValuePair> params = new ArrayList<>();
                 params.add(new BasicNameValuePair("id", "" + _id));
-                String result;
-                result = Webservice.readUrl("show",
+                String url = "show";
+                if (tozihprojects.getVisibility() == View.GONE)
+                    url = "showC";
+                String result = Webservice.readUrl(url,
                         params);
                 Log.i("QWERQWER", result);
                 if (result != null) try {
@@ -223,55 +463,55 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
                         JSONObject object = tasks.getJSONObject(i);
                         subject = object.getString("title");
                         kind = object.getString("kind");
-                        switch (kind){
+                        switch (kind) {
                             case "1":
-                                kind="استارتاپ";
+                                kind = "استارتاپ";
                                 break;
                             case "2":
-                                kind="انیمیشن";
+                                kind = "انیمیشن";
                                 break;
                             case "3":
-                                kind="تئاتر";
+                                kind = "تئاتر";
                                 break;
                             case "4":
-                                kind="سینما";
+                                kind = "سینما";
                                 break;
                             case "5":
-                                kind="عکاسی";
+                                kind = "عکاسی";
                                 break;
                             case "6":
-                                kind="فرهنگی";
+                                kind = "فرهنگی";
                                 break;
                             case "7":
-                                kind="فیلم";
+                                kind = "فیلم";
                                 break;
                             case "8":
-                                kind="فیلم کوتاه";
+                                kind = "فیلم کوتاه";
                                 break;
                             case "9":
-                                kind="مجسمه سازی";
+                                kind = "مجسمه سازی";
                                 break;
                             case "10":
-                                kind="مستند";
+                                kind = "مستند";
                                 break;
                             case "11":
-                                kind="موسیقی";
+                                kind = "موسیقی";
                                 break;
                             case "12":
-                                kind="مینیمال";
+                                kind = "مینیمال";
                                 break;
                             case "13":
-                                kind="نقاشی";
+                                kind = "نقاشی";
                                 break;
                             case "14":
-                                kind="ورزشی";
+                                kind = "ورزشی";
                                 break;
                         }
                         state = object.getString("kind");
 
                         desc = object.getString("description");
                         String s = object.getString("location");
-                        if(s.length()>4 && s.contains(",")) {
+                        if (s.length() > 4 && s.contains(",")) {
                             String[] separated = s.split(",");
                             lat = separated[0];
                             lon = separated[1];
@@ -305,7 +545,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
             protected void onPostExecute(Boolean result) {
                 txtsubj.setText(subject);
                 txtkind.setText(kind);
-                txtstate.setText(state);
+                txtstate.setText("در انتظار حامی");
 
                 mViewPager.setAdapter(new SlidingImage_Adapter(ShowActivity.this, ImagesArray));
                 indicato.setViewPager(mViewPager);
@@ -337,7 +577,8 @@ public class ShowActivity extends AppCompatActivity implements View.OnTouchListe
                     fab.setVisibility(View.VISIBLE);
                 }
 
-
+                fab.performClick();
+                fab.performClick();
             }
         }.execute();
     }

@@ -18,5 +18,5 @@
         android:layout_gravity="center"
         android:layout_marginRight="10dp"
         android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="#424242" />
+        android:textColor="#ffffff" />
 </LinearLayout>
